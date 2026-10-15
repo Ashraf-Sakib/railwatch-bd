@@ -2,14 +2,6 @@ RailWatch BD
 
 Chrome extension to monitor Bangladesh Railway ticket availability and alert when tickets become available.
 
-What Was Fixed
-
-- Replaced unreliable setInterval scheduling in the Manifest V3 service worker with chrome.alarms.
-- Fixed popup markup bugs (duplicate button IDs) that caused inconsistent behavior.
-- Added station validation using configured station codes before monitoring starts.
-- Improved status updates and control-state handling in popup logic.
-- Redesigned popup UI for a cleaner, production-grade monitoring workflow.
-- Reduced manifest permissions and removed unnecessary web-accessible resources.
 
 Project Structure
 
