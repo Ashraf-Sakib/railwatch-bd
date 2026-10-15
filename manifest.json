@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "RailWatch BD",
+  "version": "1.2.0",
+  "description": "Monitor Bangladesh Railway ticket availability and get instant notifications",
+  "minimum_chrome_version": "114",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://eticket.railway.gov.bd/*",
+    "https://*.railway.gov.bd/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "RailWatch BD",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://eticket.railway.gov.bd/*"
+      ],
+      "js": [
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

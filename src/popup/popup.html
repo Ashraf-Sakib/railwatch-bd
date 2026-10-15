@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RailWatch BD</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="container">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Bangladesh Railway Monitor</p>
+        <h1>RailWatch BD</h1>
+      </div>
+      <span class="badge" id="appStateBadge">Idle</span>
+    </header>
+
+    <section class="panel" aria-labelledby="journey-title">
+      <h2 id="journey-title">Journey Setup</h2>
+      <div class="field-grid">
+        <label class="field">
+          <span>From</span>
+          <input type="text" id="fromStation" list="stationOptions" placeholder="Select station" autocomplete="off" required>
+        </label>
+        <label class="field">
+          <span>To</span>
+          <input type="text" id="toStation" list="stationOptions" placeholder="Select station" autocomplete="off" required>
+        </label>
+        <label class="field">
+          <span>Journey Date</span>
+          <input type="date" id="journeyDate" required>
+        </label>
+        <p id="releaseHint" class="meta-row"></p>
+        <label class="field">
+          <span>Train (Optional)</span>
+          <input type="text" id="trainName" placeholder="Any train">
+        </label>
+        <label class="field">
+          <span>Class (Optional)</span>
+          <select id="className">
+            <option value="">Any Class</option>
+            <option value="SNIGDHA">Snigdha</option>
+            <option value="S_CHAIR">Shovan Chair (S_CHAIR)</option>
+            <option value="SHOVAN">Shovan</option>
+            <option value="SHULOV">Shulov</option>
+            <option value="AC_CHAIR">AC Chair</option>
+            <option value="AC_S">AC Seat</option>
+            <option value="AC_B">AC Berth</option>
+            <option value="F_SEAT">First Seat</option>
+            <option value="F_CHAIR">First Chair</option>
+            <option value="F_BERTH">First Berth</option>
+          </select>
+        </label>
+      </div>
+      <datalist id="stationOptions"></datalist>
+    </section>
+
+    <section class="panel" aria-labelledby="controls-title">
+      <h2 id="controls-title">Monitoring Controls</h2>
+      <div class="button-row">
+        <button id="startMonitoring" class="btn btn-primary" type="button">Start Monitoring</button>
+        <button id="stopMonitoring" class="btn btn-danger" type="button" disabled>Stop</button>
+        <button id="checkNow" class="btn btn-secondary" type="button" disabled>Check Now</button>
+      </div>
+      <div class="helper-row">
+        <button id="connectRailway" class="btn btn-ghost" type="button">Connect Railway Session</button>
+        <button id="refreshConnection" class="btn btn-ghost" type="button">Refresh Connection</button>
+        <button id="testNotification" class="btn btn-ghost" type="button">Test Notification</button>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="status-title">
+      <h2 id="status-title">Live Status</h2>
+      <div class="status-grid">
+        <p><span class="label">Status</span><span id="monitoringStatus" class="value">Idle</span></p>
+        <p><span class="label">Connection</span><span id="connectionStatus" class="value">Checking</span></p>
+        <p><span class="label">Last Check</span><span id="lastCheck" class="value">Never</span></p>
+        <p><span class="label">Next Check</span><span id="nextCheck" class="value">--</span></p>
+        <p><span class="label">Availability</span><span id="availabilityStatus" class="value">Waiting</span></p>
+      </div>
+      <p id="trainInfo" class="meta-row" hidden></p>
+      <p id="classInfo" class="meta-row" hidden></p>
+    </section>
+
+    <section class="panel" aria-labelledby="history-title">
+      <h2 id="history-title">Recent Checks</h2>
+      <div id="checkHistory" class="history-list">
+        <div class="empty-state">No checks performed yet</div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="reminder-title">
+      <h2 id="reminder-title">Reminder</h2>
+      <label class="checkbox-row" for="enableReminder">
+        <input type="checkbox" id="enableReminder">
+        <span>Enable reminder</span>
+      </label>
+      <label class="field">
+        <span>Reminder Date/Time</span>
+        <input type="datetime-local" id="reminderDateTime" disabled>
+      </label>
+      <button id="setReminder" class="btn btn-secondary" type="button" disabled>Set Reminder</button>
+    </section>
+
+    <footer class="app-footer">
+      <button id="clearAll" class="btn btn-ghost" type="button">Clear Data</button>
+      <span>For monitoring availability only</span>
+    </footer>
+  </main>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
